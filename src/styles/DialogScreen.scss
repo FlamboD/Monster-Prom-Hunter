@@ -1,0 +1,24 @@
+.dialog-box {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+}
+
+.dialog {
+    padding: 0.5rem;
+    background-color: lightgray;
+}
+
+.character-icon {
+    width: 64px;
+    height: 64px;
+    background-color: rgba(100, 100, 0, 0.3);
+    background-image: var(--character-sprites);
+    background-size: 300px 300px;
+    background-position: var(--background-position);
+}
+
+.dialog span {
+    position: absolute;
+    transform: translateY(-170%);
+}

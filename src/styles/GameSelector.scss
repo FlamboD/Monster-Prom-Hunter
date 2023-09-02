@@ -1,0 +1,26 @@
+#GameSelector {
+    width: min-content;
+    box-sizing: border-box;
+
+    position: fixed;
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%);
+
+    display: flex;
+    gap: 5px;
+    padding: 5px;
+
+    background-color: gray;
+    border-radius: 0 0 5px 5px;
+    .game-icon {
+        width: 64px;
+        height: 54px;
+        background-image: var(--sprite-sheet);
+        background-position-x: var(--sprite-position);
+
+        &.disabled {
+            filter: grayscale(100%);
+        }
+    }
+}

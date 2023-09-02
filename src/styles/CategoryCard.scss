@@ -1,0 +1,57 @@
+.category-card {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    border: 2px solid;
+    border-color: #f1f2f3 #f1f2f3 #d2d0d1 #d2d0d1;
+    background-color: #e9e3e4;
+
+    color: white;
+    transition: transform 100ms ease-in;
+    overflow: hidden;
+
+    &:hover {
+        transform: scale(1.1);
+        filter: brightness(95%);
+
+        .category-image {
+            filter: brightness(150%);
+        }
+    }
+
+    .category-image {
+        width: 20vw;
+        height: 20vw;
+
+        background-image: var(--img);
+        background-size: cover;
+        background-position: center;
+        background-blend-mode: multiply;
+    }
+
+    .image-border {
+        padding: 1rem;
+    }
+
+    h1 {
+        margin: 0;
+        width: 100%;
+        padding: 0.5rem;
+        background-color: #d3d0d1;
+    }
+
+    $colors: (255, 255, 0) (255, 0, 0) (30, 230, 30) (0, 0, 255);
+    @for $i from 1 through 4 {
+        &:nth-child(#{$i}) {
+            .category-image {
+                background-color: RGBA(nth($colors, $i), 0.7);
+            }
+            h1 {
+                color: RGBA(nth($colors, $i), 0.7);
+            }
+        }
+
+    }
+}

@@ -1,0 +1,25 @@
+@import './functions.scss';
+@import './spritesheets.scss';
+
+.nav-sprite {
+    @include sprite-builder(
+      $ui, 
+      var(--img), 
+      0.25, 
+      "ui",
+      ("back")
+    );
+
+    &.ui_back {
+      position: absolute;
+      left: 0.5rem;
+      z-index: 2;
+      top: -1rem;
+      transition: transform 100ms ease-in;
+  
+      &:hover {
+        transform: scale(1.1);
+        filter: brightness(120%);
+      }
+    }
+}
