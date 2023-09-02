@@ -1,15 +1,15 @@
 {
   "files": {
-    "main.css": "/static/css/main.e76282dc.css",
-    "main.js": "/static/js/main.69e34072.js",
-    "static/js/787.c3885e34.chunk.js": "/static/js/787.c3885e34.chunk.js",
-    "index.html": "/index.html",
-    "main.e76282dc.css.map": "/static/css/main.e76282dc.css.map",
-    "main.69e34072.js.map": "/static/js/main.69e34072.js.map",
-    "787.c3885e34.chunk.js.map": "/static/js/787.c3885e34.chunk.js.map"
+    "main.css": "/Monster-Prom-Hunter/static/css/main.e76282dc.css",
+    "main.js": "/Monster-Prom-Hunter/static/js/main.b611c21f.js",
+    "static/js/787.c3885e34.chunk.js": "/Monster-Prom-Hunter/static/js/787.c3885e34.chunk.js",
+    "index.html": "/Monster-Prom-Hunter/index.html",
+    "main.e76282dc.css.map": "/Monster-Prom-Hunter/static/css/main.e76282dc.css.map",
+    "main.b611c21f.js.map": "/Monster-Prom-Hunter/static/js/main.b611c21f.js.map",
+    "787.c3885e34.chunk.js.map": "/Monster-Prom-Hunter/static/js/787.c3885e34.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.e76282dc.css",
-    "static/js/main.69e34072.js"
+    "static/js/main.b611c21f.js"
   ]
 }
