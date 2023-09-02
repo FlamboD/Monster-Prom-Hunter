@@ -46,9 +46,9 @@ const SearchBar = () => {
         onChange={(e) => setSearchText(e.currentTarget.value)}
       />
       <div id='searchResults'>
-        <SearchCategory title='Characters' options={searchCharacters.map(_ => <div style={{display: 'flex', alignItems: 'center'}}><div className={`ch-sprite ch_${_.name.toLowerCase()}`} /><span>{_.name}</span></div>)} />
+        <SearchCategory title='Characters' options={searchCharacters.map(_ => <div style={{display: 'flex', alignItems: 'center'}}><div className={`ch-sprite ch_${_.name.toLowerCase()}`}></div><span>{_.name}</span></div>)} />
         <SearchCategory title='Items' options={[<></>]} />
-        <SearchCategory title='Conversations' options={searchDialog.map(_ => <div style={{display: 'flex', alignItems: 'center'}}><div className={`ch-sprite ch_${getCharacter(_.character)?.name?.toLowerCase()}`} /><span>{_.text}</span></div>)} />
+        <SearchCategory title='Conversations' options={searchDialog.map(_ => <div style={{display: 'flex', alignItems: 'center'}}><div className={`ch-sprite ch_${getCharacter(_.character)?.name?.toLowerCase()}`}></div><span>{_.text}</span></div>)} />
         {/* {searchDialog.map(_ => _.text).join("|")} */}
       </div>
     </div>
