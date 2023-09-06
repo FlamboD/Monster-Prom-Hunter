@@ -1,15 +1,15 @@
 {
   "files": {
-    "main.css": "/Monster-Prom-Hunter/static/css/main.76272c88.css",
-    "main.js": "/Monster-Prom-Hunter/static/js/main.547a121a.js",
+    "main.css": "/Monster-Prom-Hunter/static/css/main.a0bde582.css",
+    "main.js": "/Monster-Prom-Hunter/static/js/main.d4659ddb.js",
     "static/js/787.c3885e34.chunk.js": "/Monster-Prom-Hunter/static/js/787.c3885e34.chunk.js",
     "index.html": "/Monster-Prom-Hunter/index.html",
-    "main.76272c88.css.map": "/Monster-Prom-Hunter/static/css/main.76272c88.css.map",
-    "main.547a121a.js.map": "/Monster-Prom-Hunter/static/js/main.547a121a.js.map",
+    "main.a0bde582.css.map": "/Monster-Prom-Hunter/static/css/main.a0bde582.css.map",
+    "main.d4659ddb.js.map": "/Monster-Prom-Hunter/static/js/main.d4659ddb.js.map",
     "787.c3885e34.chunk.js.map": "/Monster-Prom-Hunter/static/js/787.c3885e34.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.76272c88.css",
-    "static/js/main.547a121a.js"
+    "static/css/main.a0bde582.css",
+    "static/js/main.d4659ddb.js"
   ]
 }
