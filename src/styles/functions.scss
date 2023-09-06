@@ -1,9 +1,6 @@
 @mixin sprite-builder($sheet, $img, $scale, $prefix, $sprites: ()) {
     $scaleX: 0;
     $scaleY: 0;
-    // @if type-of($scale) != "number" {
-    //     @error type-of($scale);
-    // }
 
     @if type-of($scale) == "list" {
         $scaleX: nth($scale, 1);
@@ -14,13 +11,16 @@
     }
     @each $spriteName, $char in map-get($sheet, "sprites") {
         @if index($sprites, $spriteName) or length($sprites) == 0 {
-            // @if length($sprites) != 0 {@error #{$sprites};}
             &.#{$prefix}_#{$spriteName} {
+                --sprite-width: 100%;
                 background-image: $img;
-                background-size: #{map-get($sheet, "w") * $scaleX} #{map-get($sheet, "h") * $scaleY};
-                background-position: #{map-get($char, "x") * $scaleX} #{map-get($char, "y") * $scaleY};
-                width: #{map-get($char, "w") * $scaleX};
-                height: #{map-get($char, "h") * $scaleY};
+                background-size: #{(100 * map-get($sheet, "w") / map-get($char, "w")) * 1%};
+                background-position: 
+                    #{((100*map-get($char, "x")/map-get($char, "w"))/((map-get($sheet, "w")/map-get($char, "w"))-1)) * 1%} 
+                    #{((100*map-get($char, "y")/map-get($char, "h"))/((map-get($sheet, "h")/map-get($char, "h"))-1)) * 1%};
+                width: var(--sprite-width);
+                height: 0;
+                padding-bottom: calc(var(--sprite-width) * #{(map-get($char, "h") / map-get($char, "w"))});
             }
         }
     }

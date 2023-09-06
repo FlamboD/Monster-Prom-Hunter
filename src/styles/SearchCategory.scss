@@ -1,0 +1,26 @@
+.search-category {
+    .collapse.show {
+        display: flex;
+        + .category-extender {
+            height: 0;
+            display: none;
+        }
+    }
+    .collapsing {
+        + .category-extender {
+            height: 0;
+        }
+    }
+    .category-extender {
+        display: flex;
+        align-content: center;
+        justify-content: center;
+
+        height: 1rem;
+        transition: height 0.35s ease;
+
+        > div {
+            width: 1rem;
+        }
+    }
+}

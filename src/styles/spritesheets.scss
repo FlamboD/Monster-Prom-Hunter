@@ -1,364 +1,376 @@
 $characters: (
     prom: (
-        w: 2048px,
-        h: 2048px,
+        w: 2048,
+        h: 2048,
         sprites: (
             narrator: (
-                x: -724px,
-                y: -1352px,
-                w: 360px,
-                h: 320px
+                x: 724,
+                y: 1352,
+                w: 360,
+                h: 320
             ),
             miranda: (
-                x: -2px,
-                y: -161px,
-                w: 347px,
-                h: 422px
+                x: 2,
+                y: 161,
+                w: 347,
+                h: 422
             ),
             damien: (
-                x: -410px,
-                y: -1262px,
-                w: 302px,
-                h: 418px
+                x: 410,
+                y: 1262,
+                w: 302,
+                h: 418
             ),
             scott: (
-                x: -1560px,
-                y: -284px,
-                w: 333px,
-                h: 417px
+                x: 1560,
+                y: 284,
+                w: 333,
+                h: 417
             ),
             liam: (
-                x: -415px,
-                y: -436px,
-                w: 369px,
-                h: 408px
+                x: 415,
+                y: 436,
+                w: 369,
+                h: 408
             ),
             polly: (
-                x: -1456px,
-                y: -1196px,
-                w: 358px,
-                h: 474px
+                x: 1456,
+                y: 1196,
+                w: 358,
+                h: 474
             ),
             vera: (
-                x: 0px,
-                y: -595px,
-                w: 403px,
-                h: 402px
+                x: 0,
+                y: 595,
+                w: 403,
+                h: 402
             ),
             prince: (
-                x: -795px,
-                y: -521px,
-                w: 425px,
-                h: 397px
+                x: 795,
+                y: 521,
+                w: 425,
+                h: 397
             ),
             coach: (
-                x: -1232px,
-                y: -712px,
-                w: 466px,
-                h: 472px
+                x: 1232,
+                y: 712,
+                w: 466,
+                h: 472
             ),
             blobert: (
-                x: -724px,
-                y: -930px,
-                w: 404px,
-                h: 412px
+                x: 724,
+                y: 930,
+                w: 404,
+                h: 412
             ),
             valerie: (
-                x: -1096px,
-                y: -1632px,
-                w: 349px,
-                h: 414px
+                x: 1096,
+                y: 1632,
+                w: 349,
+                h: 414
             ),
             slayer: (
-                x: -2px,
-                y: -1008px,
-                w: 357px,
-                h: 325px
+                x: 2,
+                y: 1008,
+                w: 357,
+                h: 325
             ),
             wolfpack: (
-                x: -2px,
-                y: -1344px,
-                w: 396px,
-                h: 349px
+                x: 2,
+                y: 1344,
+                w: 396,
+                h: 349
             ),
             hope: (
-                x: -410px,
-                y: -1692px,
-                w: 343px,
-                h: 354px
+                x: 410,
+                y: 1692,
+                w: 343,
+                h: 354
             ),
             joy: (
-                x: -1457px,
-                y: -1680px,
-                w: 355px,
-                h: 366px
+                x: 1457,
+                y: 1680,
+                w: 355,
+                h: 366
             ),
             faith: (
-                x: -1088px,
-                y: -1224px,
-                w: 362px,
-                h: 382px
+                x: 1088,
+                y: 1224,
+                w: 362,
+                h: 382
             )
         )
     )
 );
 
 $ui: (
-    w: 2048px,
-    h: 2048px,
+    w: 2048,
+    h: 2048,
     sprites: (
         back: (
-            x: -1px,
-            y: -143px,
-            w: 430px,
-            h: 231px
+            x: 1,
+            y: 143,
+            w: 430,
+            h: 231
         ),
         cursor-yellow: (
-            x: -1677px,
-            y: -1713px,
-            w: 136px,
-            h: 70px
+            x: 1677,
+            y: 1713,
+            w: 136,
+            h: 70
         ),
         cursor-red: (
-            x: -0px,
-            y: -1128px,
-            w: 136px,
-            h: 70px
+            x: 0,
+            y: 1128,
+            w: 136,
+            h: 70
         ),
         cursor-green: (
-            x: -1617px,
-            y: -745px,
-            w: 136px,
-            h: 70px
+            x: 1617,
+            y: 745,
+            w: 136,
+            h: 70
         ),
         cursor-blue: (
-            x: -145px,
-            y: -1128px,
-            w: 135px,
-            h: 70px
+            x: 145,
+            y: 1128,
+            w: 135,
+            h: 70
         ),
         cursor-black: (
-            x: -1617px,
-            y: -825px,
-            w: 135px,
-            h: 70px
+            x: 1617,
+            y: 825,
+            w: 135,
+            h: 70
         ),
         cursor-white: (
-            x: -142px,
-            y: -62px,
-            w: 136px,
-            h: 70px
+            x: 142,
+            y: 62,
+            w: 136,
+            h: 70
         ),
         textbox-lightblue: (
-            x: -7px,
-            y: -385px,
-            w: 797px,
-            h: 160px
+            x: 7,
+            y: 385,
+            w: 797,
+            h: 160
         ),
         textbox-blue: (
-            x: -7px,
-            y: -561px,
-            w: 797px,
-            h: 160px
+            x: 7,
+            y: 561,
+            w: 797,
+            h: 160
         ),
         textbox-lightred: (
-            x: -7px,
-            y: -737px,
-            w: 797px,
-            h: 160px
+            x: 7,
+            y: 737,
+            w: 797,
+            h: 160
         ),
         textbox-red: (
-            x: -7px,
-            y: -913px,
-            w: 797px,
-            h: 160px
+            x: 7,
+            y: 913,
+            w: 797,
+            h: 160
         ),
         textbox-lightyellow: (
-            x: -815px,
-            y: -561px,
-            w: 797px,
-            h: 160px
+            x: 815,
+            y: 561,
+            w: 797,
+            h: 160
         ),
         textbox-yellow: (
-            x: -815px,
-            y: -737px,
-            w: 797px,
-            h: 160px
+            x: 815,
+            y: 737,
+            w: 797,
+            h: 160
         ),
         textbox-salmon: (
-            x: -815px,
-            y: -913px,
-            w: 797px,
-            h: 160px
+            x: 815,
+            y: 913,
+            w: 797,
+            h: 160
         ),
         textbox-lightgreen: (
-            x: -1217px,
-            y: -1097px,
-            w: 797px,
-            h: 160px
+            x: 1217,
+            y: 1097,
+            w: 797,
+            h: 160
         ),
         textbox-green: (
-            x: -1217px,
-            y: -1273px,
-            w: 797px,
-            h: 160px
+            x: 1217,
+            y: 1273,
+            w: 797,
+            h: 160
         ),
         textbox-black: (
-            x: -12px,
-            y: -1701px,
-            w: 1655px,
-            h: 334px
+            x: 12,
+            y: 1701,
+            w: 1655,
+            h: 334
+        ),
+        arrow-down: (
+            x: 286,
+            y: 54,
+            w: 78,
+            h: 78
+        ),
+        arrow-up: (
+            x: 541,
+            y: 297,
+            w: 78,
+            h: 78
         )
     )
 );
 
 $stats: (
-    w: 2048px,
-    h: 1024px,
+    w: 2048,
+    h: 1024,
     sprites: (
         smart: (
-            x: -0px,
-            y: -112px,
-            w: 148px,
-            h: 148px
+            x: 0,
+            y: 112,
+            w: 148,
+            h: 148
         ),
         bold: (
-            x: -192px,
-            y: -136px,
-            w: 148px,
-            h: 148px
+            x: 192,
+            y: 136,
+            w: 148,
+            h: 148
         ),
         charming: (
-            x: -192px,
-            y: -295px,
-            w: 148px,
-            h: 148px
+            x: 192,
+            y: 295,
+            w: 148,
+            h: 148
         ),
         creative: (
-            x: -851px,
-            y: -536px,
-            w: 149px,
-            h: 148px
+            x: 851,
+            y: 536,
+            w: 149,
+            h: 148
         ),
         fun: (
-            x: -532px,
-            y: -688px,
-            w: 148px,
-            h: 148px
+            x: 532,
+            y: 688,
+            w: 148,
+            h: 148
         ),
         wealthy: (
-            x: -1056px,
-            y: -873px,
-            w: 148px,
-            h: 148px
+            x: 1056,
+            y: 873,
+            w: 148,
+            h: 148
         ),
         not-smart: (
-            x: -516px,
-            y: -328px,
-            w: 148px,
-            h: 148px
+            x: 516,
+            y: 328,
+            w: 148,
+            h: 148
         ),
         not-bold: (
-            x: -556px,
-            y: -512px,
-            w: 148px,
-            h: 148px
+            x: 556,
+            y: 512,
+            w: 148,
+            h: 148
         ),
         not-charming: (
-            x: -672px,
-            y: -348px,
-            w: 152px,
-            h: 156px
+            x: 672,
+            y: 348,
+            w: 152,
+            h: 156
         ),
         not-creative: (
-            x: -848px,
-            y: -692px,
-            w: 151px,
-            h: 152px
+            x: 848,
+            y: 692,
+            w: 151,
+            h: 152
         ),
         not-fun: (
-            x: -672px,
-            y: -192px,
-            w: 148px,
-            h: 148px
+            x: 672,
+            y: 192,
+            w: 148,
+            h: 148
         ),
         not-wealthy: (
-            x: -1008px,
-            y: -696px,
-            w: 148px,
-            h: 148px
+            x: 1008,
+            y: 696,
+            w: 148,
+            h: 148
         ),
         so-smart: (
-            x: -830px,
-            y: -168px,
-            w: 148px,
-            h: 172px
+            x: 830,
+            y: 168,
+            w: 148,
+            h: 172
         ),
         so-bold: (
-            x: -376px,
-            y: -664px,
-            w: 148px,
-            h: 172px
+            x: 376,
+            y: 664,
+            w: 148,
+            h: 172
         ),
         so-charming: (
-            x: -376px,
-            y: -848px,
-            w: 156px,
-            h: 176px
+            x: 376,
+            y: 848,
+            w: 156,
+            h: 176
         ),
         so-creative: (
-            x: -352px,
-            y: -304px,
-            w: 156px,
-            h: 172px
+            x: 352,
+            y: 304,
+            w: 156,
+            h: 172
         ),
         so-fun: (
-            x: -684px,
-            y: -668px,
-            w: 156px,
-            h: 172px
+            x: 684,
+            y: 668,
+            w: 156,
+            h: 172
         ),
         so-wealthy: (
-            x: -732px,
-            y: -854px,
-            w: 156px,
-            h: 170px
+            x: 732,
+            y: 854,
+            w: 156,
+            h: 170
         ),
         not-so-smart: (
-            x: -0px,
-            y: -456px,
-            w: 161px,
-            h: 172px
+            x: 0,
+            y: 456,
+            w: 161,
+            h: 172
         ),
         not-so-bold: (
-            x: -192px,
-            y: -456px,
-            w: 149px,
-            h: 172px
+            x: 192,
+            y: 456,
+            w: 149,
+            h: 172
         ),
         not-so-charming: (
-            x: -0px,
-            y: -268px,
-            w: 184px,
-            h: 177px
+            x: 0,
+            y: 268,
+            w: 184,
+            h: 177
         ),
         not-so-creative: (
-            x: -376px,
-            y: -484px,
-            w: 169px,
-            h: 172px
+            x: 376,
+            y: 484,
+            w: 169,
+            h: 172
         ),
         not-so-fun: (
-            x: -896px,
-            y: -852px,
-            w: 152px,
-            h: 172px
+            x: 896,
+            y: 852,
+            w: 152,
+            h: 172
         ),
         not-so-wealthy: (
-            x: -540px,
-            y: -852px,
-            w: 182px,
-            h: 172px
+            x: 540,
+            y: 852,
+            w: 182,
+            h: 172
         ),
     )
 );

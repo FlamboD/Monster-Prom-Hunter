@@ -1,115 +1,102 @@
-import characters, { ICharacter } from "../data/Characters"
-import "../styles/DialogScreen.scss"
 import React from 'react'
+import data, { ICharacter } from '../data/data';
+import { IEventDialog } from "../data/data"
+import "../styles/DialogScreen.scss"
+import AccordionDialog from './AccordionDialog';
+import Dialog from './Dialog';
 
-interface IDialog {
-    type: string,
-    speaker: ICharacter,
-    text: string
+const getCharacter: (id?: number) => ICharacter | undefined = (id) => {
+    return data.characters.find(_ => _.id === id);
 }
-interface IChoice {
-    type: string,
-    options: Array<{
-        text: string,
-        stat: string,
-        dialog: Array<IDialog>
-    }>
-}
-
-const DialogScreen = () => {
-    let dialog: { dialog: Array<IDialog>, choice: IChoice } = {
-        dialog: [
-            {
-                type: "text",
-                speaker: characters.Damian,
-                text: "Hi"
-            },
-            {
-                type: "text",
-                speaker: characters.Liam,
-                text: "Hi"
-            },
-            {
-                type: "text",
-                speaker: characters.Polly,
-                text: "Hi"
-            }
-        ],
-        choice: {
-            type: "choice",
-            options: [
-                {
-                    text: "Option A",
-                    stat: "charm",
-                    dialog: [
-                        {
-                            type: "text",
-                            speaker: characters.Vera,
-                            text: "bye #1"
-                        }
-                    ]
-                },
-                {
-                    text: "Option B",
-                    stat: "fun",
-                    dialog: [
-                        {
-                            type: "text",
-                            speaker: characters.Liam,
-                            text: "bye #2"
-                        }
-                    ]
-                }
-            ]
-        }
+const getStat: (stat?: number) => string = stat => {
+    switch (stat) {
+        case 0: return 'smart'
+        case 1: return 'bold'
+        case 2: return 'creative'
+        case 3: return 'charming'
+        case 4: return 'fun'
+        case 5: return 'wealthy'
+        default: return 'smart'
     }
+}
+const DialogScreen = ({ data }: { data: IEventDialog }) => {
     return (
         <div className="dialog-box" style={{ display: "flex", flexDirection: "column" }}>
             {
-                dialog.dialog.map(_ => {
+                data.dialog.filter(_ => _.option === null).map(_ => {
                     return (
-                        <div className="dialog">
-                            <div 
-                                className="character-icon" 
-                                style={{ 
-                                    "--character-sprites": `url(${process.env.PUBLIC_URL}/images/prom/character-sprites.png)`, 
-                                    width: `${_.speaker.sprite.icon.width}px`, 
-                                    height: `${_.speaker.sprite.icon.height}px`, 
-                                    "--background-position": `${_.speaker.sprite.icon.x}px ${_.speaker.sprite.icon.y}px` 
-                                } as React.CSSProperties}>
-                            </div>
-                            <span 
-                                style={{ 
-                                    position: "absolute", 
-                                    transform: "translateY(-50%);" 
-                                }}>
-                                {_.speaker.name}
-                            </span>
-                            <div 
-                                className="textbox" 
-                                style={{ 
-                                    "--textbox-sprites": `url(${process.env.PUBLIC_URL}/images/prom/textbox-sprites.png)`, 
-                                    "--background-position": "-100px -100px" 
-                                } as React.CSSProperties}>
-                            </div>
-                            {/* {_.text} */}
-                        </div>
+                        <Dialog character={getCharacter(_.character)} text={_.text} />
                     );
                 })
             }
-            <div className="choice-box" style={{ display: "flex" }}>
-                <div>
-                    <div className="choice">
-                        {dialog.choice.options[0].text}
-                    </div>
-                </div>
-                <div>|</div>
-                <div>
-                    <div className="choice">
-                        {dialog.choice.options[1].text}
-                    </div>
-                </div>
-            </div>
+            {
+                (() => {
+                    return data.options === undefined || data.options.length === 0 ? null : (
+                        <>
+                            <div
+                                className="choice-box"
+                                style={{
+                                    display: "grid",
+                                    gridTemplateColumns: '1fr 1fr',
+                                    alignItems: 'stretch',
+                                    width: '100%',
+                                    padding: '0 2rem',
+                                    gap: '2rem',
+                                    boxSizing: 'border-box'
+                                }}>
+                                {
+                                    data.options.map(_ => {
+                                        return (
+                                            <div className="choice">
+                                                <div style={{
+                                                    backgroundColor: 'black',
+                                                    height: '100%',
+                                                    padding: '1rem',
+                                                    paddingBottom: '2rem',
+                                                    boxSizing: 'border-box'
+                                                }}>
+                                                    <span>{_.text}</span>
+                                                </div>
+                                                <div style={{ position: 'absolute', top: '100%', width: '100%', display: 'flex', justifyContent: 'space-around', transform: 'translateY(-2rem)' }}>
+                                                    <div
+                                                        style={{ width: '5rem' }}
+                                                        className={_.option === 0 ? '' : 'collapsed'}
+                                                        data-bs-toggle="collapse" data-bs-target={`#collapse${_.option}1`} aria-expanded={_.option === 0} aria-controls={`collapse${_.option}1`}
+                                                    >
+                                                        <div className={`st-sprite st_so-${getStat(_.stat)}`}></div>
+                                                    </div>
+                                                    <div
+                                                        style={{ width: '5rem' }}
+                                                        className={'collapsed'}
+                                                        data-bs-toggle="collapse" data-bs-target={`#collapse${_.option}0`} aria-expanded='false' aria-controls={`collapse${_.option}0`}
+                                                    >
+                                                        <div className={`st-sprite st_not-so-${getStat(_.stat)}`}></div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        )
+                                    })
+                                }
+                            </div>
+                            <div className="accordion d-flex mt-5 justify-content-between" id="dialogPaths">
+                                {
+                                    (() => {
+                                        let items: Array<JSX.Element> = [];
+                                        for(let iOption = 0; iOption < 2; iOption++) {
+                                            for(let iSuccess = 1; iSuccess >= 0; iSuccess--) {
+                                                items.push(
+                                                    <AccordionDialog dialog={data.dialog.filter(_ => _.option === iOption && _.success === iSuccess)} getCharacter={getCharacter} iOption={iOption} iSuccess={iSuccess}/>
+                                                )
+                                            }
+                                        }
+                                        return items;
+                                    })()
+                                }
+                            </div>
+                        </>
+                    )
+                })()
+            }
         </div>
     )
 }

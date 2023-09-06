@@ -1,13 +1,16 @@
 import React from 'react'
+import '../styles/SearchCategory.scss'
 
 const SearchCategory = ({title, options}: {title: string, options: Array<JSX.Element>}) => {
   return (
     <div 
+        key={`cat_${title}`}
         className='search-category' 
         style={{
             display: options.length ? 'flex' : 'none',
             flexDirection: 'column',
-        }}>
+        }}
+        >
         <span 
             className='title'
             style={{
@@ -21,18 +24,35 @@ const SearchCategory = ({title, options}: {title: string, options: Array<JSX.Ele
                 backgroundSize: '20px 20px',
                 backgroundRepeat: 'repeat'
             }}
+            data-bs-toggle="collapse" 
+            data-bs-target={`#cat-${title}`}
+            aria-expanded="true" 
+            aria-controls={`cat-${title}`}
         >{title}</span>
         <div
+            id={`cat-${title}`}
+            className='collapse show'
             style={{
-                display: 'flex',
                 flexDirection: 'column',
                 alignItems: 'flex-start',
                 padding: '0 0.5rem',
                 backgroundColor: 'white'
             }}>
             {
-                options
+                options.slice(0, 5)
             }
+            {
+                options.length > 5 ? <div>{options.length - 5} more...</div> : <></>
+            }
+        </div>
+        <div 
+            className='category-extender'
+            data-bs-toggle="collapse" 
+            data-bs-target={`#cat-${title}`}
+            aria-expanded="true" 
+            aria-controls={`cat-${title}`}
+        >
+            <div style={{width: '1rem'}}><div className="ui-sprite ui_arrow-down"></div></div>
         </div>
     </div>
   )

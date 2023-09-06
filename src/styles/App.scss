@@ -1,0 +1,46 @@
+@import './functions.scss';
+@import './spritesheets.scss';
+
+.App {
+  display: grid;
+  grid-template-rows: min-content min-content auto;
+  // text-align: center;
+  height: 100vh;
+  row-gap: 2rem;
+  > * {
+    position: relative;
+  }
+  .navigation {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+.ch-sprite {
+  background-image: var(--character-default);
+  aspect-ratio: 1 / 1;
+  background-repeat: no-repeat;
+  @include sprite-builder(
+      map-get($characters, "prom"), 
+      var(--character-sprites), 
+      0.1, 
+      "ch"
+  );
+}
+
+.ui-sprite {
+  @include sprite-builder(
+    $ui, 
+    var(--ui-sprites), 
+    0.25, 
+    "ui"
+  );
+}
+
+.st-sprite {
+  @include sprite-builder(
+    $stats, 
+    var(--stat-sprites), 
+    0.25, 
+    "st"
+  );
+}

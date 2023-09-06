@@ -6,7 +6,7 @@ interface ISprite {
     backgroundX: number,
     backgroundY: number
 }
-export interface ICharacter {
+export interface ICharacterSprite {
     name: string,
     sprite: {
         icon: ISprite,
@@ -14,7 +14,7 @@ export interface ICharacter {
     }
 }
 
-const characters: { [id: string]: ICharacter} = {
+const characters: { [id: string]: ICharacterSprite} = {
     Miranda: {
         name: "Miranda",
         sprite: {

@@ -1,7 +1,7 @@
 .dialog-box {
     display: flex;
     flex-direction: column;
-    gap: 2rem;
+    gap: 1rem;
 }
 
 .dialog {
@@ -18,7 +18,37 @@
     background-position: var(--background-position);
 }
 
-.dialog span {
-    position: absolute;
-    transform: translateY(-170%);
+.choice-box {
+    width: 100%;
+    padding: 0 2rem;
+    .choice {
+        position: relative;
+        color: white;
+    }
 }
+
+
+.collapse {
+    width: 100%;
+}
+.collapsed {
+    filter: grayscale(1);
+    &:hover {
+        filter: grayscale(0.7);
+    }
+}
+
+// .collapsing {
+//     width: 0;
+//     transition: width 0.35s ease;
+//     height: auto;
+// }
+
+// .accordion-dialog {
+//     transition: width .35s ease;
+// }
+
+// .dialog span {
+//     position: absolute;
+//     transform: translateY(-170%);
+// }

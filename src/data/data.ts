@@ -31,6 +31,11 @@ export interface IOption {
     onSuccess?: number, 
     onFailure?: number
 }
+export interface IEventDialog {
+    event: IEvent,
+    dialog: Array<IDialog>,
+    options?: Array<IOption>
+}
 export interface IHeart {
     eventId: number, 
     option: number, 

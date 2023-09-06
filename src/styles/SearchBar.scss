@@ -2,31 +2,29 @@
 @import './spritesheets.scss';
 
 #search {
+  position: relative;
+  width: 50%;
+  max-width: 25rem;
   display: flex;
+  align-items: center;
   z-index: 3;
-
-  &.nav-sprite {
-      @include sprite-builder(
-        $ui, 
-        var(--img), 
-        (0.5, 0.2), 
-        "ui",
-        ("textbox-black")
-      );
-  }
+  
   img {
     filter: invert(1);
-    margin: 5px;
-    margin-left: 2.5rem;
+    width: 3rem;
+    margin-left: 5%;
   }
   input {
     background-color: transparent;
     border: none;
     outline: none;
     flex-grow: 1;
+    flex-shrink: 1;
     padding: 5px;
     color: white;
     font-size: 30pt;
+    min-width: 0;
+    z-index: 2;
 
     &::-webkit-search-cancel-button {
       -webkit-appearance: none;
@@ -40,6 +38,11 @@
       display: flex!important;
     }
   }
+  &:hover {
+    #searchResults {
+    display: flex!important;
+    }
+  }
   #searchResults {
     display: none;
     flex-direction: column;
@@ -48,11 +51,11 @@
 
     position: absolute;
     top: calc(100% + 0.2rem);
-    left: 2rem;
+    left: 4%;
 
-    width: calc(100% - 2rem);
+    width: calc(100% - 4%);
     box-sizing: border-box;
     border: 5px solid #CCC;
-    background-color: red;
+    background-color: white;
   }
 }
