@@ -1,0 +1,9 @@
+.accordion-dialog {
+    transition: width 1.35s ease;
+
+    .accordion-collapse {
+        .dialog-container {
+            width: calc(100vw - var(--item-count));
+        }
+    }
+}

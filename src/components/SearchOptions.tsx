@@ -8,7 +8,7 @@ const SearchOptions = ({ className, text, setDialogData }: { className: string, 
         alignItems: 'center',
         padding: '0.3rem 0'
       }}
-      onClick={() => { console.log("A"); if (setDialogData !== undefined) setDialogData(); console.log("B") }}
+      onClick={() => { if (setDialogData !== undefined) setDialogData(); }}
     >
       {
         (() => {

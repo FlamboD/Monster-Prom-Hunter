@@ -1,14 +1,14 @@
 import React from 'react'
+import '../styles/Dialog.scss';
 import { ICharacter } from '../data/data'
 
 const Dialog = ({character, text}: {character?: ICharacter, text?: string}) => {
-    console.log(character);
   return (
-    <div className="dialog" style={{ textAlign: 'start', display: 'flex', gap: '1rem', alignItems: 'center', justifyContent: character === undefined ? 'center' : 'flex-start' }}>
+    <div className="dialog" style={{ justifyContent: character === undefined ? 'center' : 'flex-start' }}>
         {
             (() => {
                 return character === undefined ? (<></>) : (
-                    <div style={{ width: '5rem' }}>
+                    <div className='sprite'>
                         <div
                             className={`ch-sprite ch_${character?.name?.toLowerCase()}`}
                         ></div>

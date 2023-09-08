@@ -1,0 +1,34 @@
+
+.choice {
+    position: relative;
+    height: 100%;
+
+    .choice-bg {
+        height: inherit;
+        box-sizing: border-box;
+        padding: 1rem;
+        padding-bottom: 2rem;
+        border: 3px dashed black;
+    
+        color: black;
+        background-color: white;
+    
+        
+        &:hover {
+            background-color: #888888;
+        }
+    }
+    &.selected .choice-bg {
+        color: white;
+        background-color: black;
+        border-style: solid;
+    }
+    
+    .stat-btns {
+        pointer-events: none;
+
+        .choice-trigger {
+            pointer-events: auto;
+        }
+    }
+}

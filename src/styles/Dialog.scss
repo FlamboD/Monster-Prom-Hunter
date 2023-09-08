@@ -1,0 +1,11 @@
+.dialog {
+    text-align: start;
+    display: flex;
+    gap: 1rem;
+    align-items: center;
+
+    .sprite {
+        width: 3rem;
+        flex-shrink: 0;
+    }
+}

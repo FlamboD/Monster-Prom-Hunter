@@ -7,8 +7,7 @@ export interface ICategoryPage extends IPage {
 export interface ICard {
   key: React.Key,
   title: String,
-  img: String,
-  nextPage?: ICategoryPage
+  img: String
 }
 
 const page: ICategoryPage =
@@ -20,27 +19,27 @@ const page: ICategoryPage =
       key: "C_MP_CHARACTERS",
       title: "Characters",
       img: process.env.PUBLIC_URL + "/images/prom/class_photo.png",
-      nextPage: {
-        key: "P_MP_CHARACTERS",
-        prev: undefined,
-        cards: [
-          {
-            key: "C_MP_MAIN",
-            title: "Main Characters",
-            img: process.env.PUBLIC_URL + "/images/prom/polaroid7.png"
-          },
-          {
-            key: "C_MP_NPCS",
-            title: "NPCs",
-            img: process.env.PUBLIC_URL + "/images/prom/class_photo.png"
-          },
-          {
-            key: "C_MP_PLAYERS",
-            title: "Player Characters",
-            img: process.env.PUBLIC_URL + "/images/prom/class_photo.png"
-          },
-        ]
-      }
+      // nextPage: {
+      //   key: "P_MP_CHARACTERS",
+      //   prev: undefined,
+      //   cards: [
+      //     {
+      //       key: "C_MP_MAIN",
+      //       title: "Main Characters",
+      //       img: process.env.PUBLIC_URL + "/images/prom/polaroid7.png"
+      //     },
+      //     {
+      //       key: "C_MP_NPCS",
+      //       title: "NPCs",
+      //       img: process.env.PUBLIC_URL + "/images/prom/class_photo.png"
+      //     },
+      //     {
+      //       key: "C_MP_PLAYERS",
+      //       title: "Player Characters",
+      //       img: process.env.PUBLIC_URL + "/images/prom/class_photo.png"
+      //     },
+      //   ]
+      // }
     },
     {
       key: "C_MP_ENDINGS",
@@ -55,15 +54,15 @@ const page: ICategoryPage =
   ]
 }
 
-const setPrev = (p: ICategoryPage) => {
-  p.cards.forEach((c: ICard) => {
-    if(c.nextPage) {
-      setPrev(c.nextPage);
-      c.nextPage.prev = p;
-    }
-  })
-}
-setPrev(page);
+// const setPrev = (p: ICategoryPage) => {
+//   p.cards.forEach((c: ICard) => {
+//     if(c.nextPage) {
+//       setPrev(c.nextPage);
+//       c.nextPage.prev = p;
+//     }
+//   })
+// }
+// setPrev(page);
 
 
 export default page;

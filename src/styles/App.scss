@@ -2,6 +2,9 @@
 @import './spritesheets.scss';
 
 .App {
+  max-width: 100vw;
+  overflow-x: hidden;
+  
   display: grid;
   grid-template-rows: min-content min-content auto;
   // text-align: center;
@@ -13,6 +16,11 @@
   .navigation {
     grid-template-columns: repeat(3, 1fr);
   }
+}
+
+.glow {
+  text-shadow: 0 0 2px #888, 0 0 4px #888, 0 0 6px var(--glow-color), 0 0 8px var(--glow-color), 0 0 8px var(--glow-color), 0 0 8px var(--glow-color), 0 0 8px var(--glow-color);
+  color: white;
 }
 
 .ch-sprite {

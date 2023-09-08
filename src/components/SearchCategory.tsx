@@ -1,7 +1,8 @@
 import React from 'react'
 import '../styles/SearchCategory.scss'
+import SearchOptions from './SearchOptions'
 
-const SearchCategory = ({title, options}: {title: string, options: Array<JSX.Element>}) => {
+const SearchCategory = ({title, options}: {title: string, options: Array<{key: string, setDialogData?: () => void, className: string, text: string}>}) => {
   return (
     <div 
         key={`cat_${title}`}
@@ -39,7 +40,15 @@ const SearchCategory = ({title, options}: {title: string, options: Array<JSX.Ele
                 backgroundColor: 'white'
             }}>
             {
-                options.slice(0, 5)
+                options.slice(0, 5).map(
+                    _ => 
+                    <SearchOptions 
+                        key={_.key} 
+                        setDialogData={_.setDialogData} 
+                        className={_.className} 
+                        text={_.text || "..."} 
+                    />
+                )
             }
             {
                 options.length > 5 ? <div>{options.length - 5} more...</div> : <></>

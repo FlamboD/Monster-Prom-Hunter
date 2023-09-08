@@ -56,11 +56,11 @@ const SearchBar = ({ setDialogData }: { setDialogData: (_: IEventDialog) => void
         />
         <div ref={searchResultsRef as React.MutableRefObject<HTMLDivElement>} id='searchResults'>
           {/* <div key={`char_${_.id}`} style={{display: 'flex', alignItems: 'center'}}><div className={`ch-sprite ch_${_.name.toLowerCase()}`}></div><span>{_.name}</span></div>) */}
-          <SearchCategory title='Characters' options={searchCharacters.map(_ => <SearchOptions key={`char_${_.id}`} className={`ch-sprite ch_${_.name.toLowerCase()}`} text={_.name} />)} />
+          <SearchCategory title='Characters' options={searchCharacters.map(_ => {return {key:`char_${_.id}`, className:`ch-sprite ch_${_.name.toLowerCase()}`, text:_.name}} )} />
           <SearchCategory title='Items' options={[]} />
           {/* <div key={`txt_${_.eventId}-${i}`} style={{display: 'flex', alignItems: 'center'}}><div className={`ch-sprite ch_${getCharacter(_.character)?.name?.toLowerCase()}`}></div><span>{_.text}</span></div> */}
-          <SearchCategory title='Choices' options={searchChoices.map((_, i) => <SearchOptions key={`choice_${_.eventId}-${i}`} setDialogData={() => setDialogData(getEventDialog(_.eventId))} className={``} text={_.text || "..."} />)} />
-          <SearchCategory title='Conversations' options={searchDialog.map((_, i) => <SearchOptions key={`txt_${_.eventId}-${i}`} setDialogData={() => setDialogData(getEventDialog(_.eventId))} className={`ch-sprite ch_${getCharacter(_.character)?.name?.toLowerCase()}`} text={_.text || "..."} />)} />
+          <SearchCategory title='Choices' options={searchChoices.map((_, i) => {return {key:`choice_${_.eventId}-${i}`, setDialogData:() => setDialogData(getEventDialog(_.eventId)), className:``, text:_.text || "..."}} )} />
+          <SearchCategory title='Conversations' options={searchDialog.map((_, i) => {return {key:`txt_${_.eventId}-${i}`, setDialogData:() => setDialogData(getEventDialog(_.eventId)), className:`ch-sprite ch_${getCharacter(_.character)?.name?.toLowerCase()}`, text:_.text || "..." }} )} />
           {/* {searchDialog.map(_ => _.text).join("|")} */}
         </div>
     </div>

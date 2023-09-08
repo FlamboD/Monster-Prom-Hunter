@@ -1,6 +1,5 @@
 import React from 'react'
 import "../styles/Test.scss";
-import { randomUUID } from 'crypto';
 
 const TestX = () => {
   return (
