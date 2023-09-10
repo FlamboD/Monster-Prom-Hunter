@@ -2,7 +2,6 @@ import React, { useEffect, useRef, useState } from 'react';
 import '../styles/SearchBar.scss';
 import data, { IDialog, IItem, IOption, ICharacter, IEventDialog } from '../data/data';
 import SearchCategory from './SearchCategory';
-import SearchOptions from './SearchOptions';
 
 const getCharacter: (id?: number) => ICharacter | undefined = (id) => {
   return data.characters.find(_ => _.id === id);

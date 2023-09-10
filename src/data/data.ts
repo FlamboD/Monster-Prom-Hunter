@@ -42,12 +42,19 @@ export interface IHeart {
     success: number, 
     character: number
 }
+export interface IItem {
+    name: string,
+    price: number,
+    narrativeName: string,
+    narrativeDescription: string
+}
 export interface IData {
     characters: Array<ICharacter>,
     events: Array<IEvent>,
     dialog: Array<IDialog>,
     options: Array<IOption>,
-    hearts: Array<IHeart>
+    hearts: Array<IHeart>,
+    items: IItem[]
 }
 
 const data: IData = jsonData as IData;
