@@ -1,4 +1,4 @@
-import React, { useEffect, useRef } from 'react';
+import React, { useCallback, useEffect, useRef } from 'react';
 import '../styles/Choice.scss';
 import $ from 'jquery';
 import { Collapse } from 'react-bootstrap';
@@ -38,7 +38,7 @@ const Choice = ({ isActive, text, canLose=false, stat }: { isActive: boolean, te
         return () => {
             $(".choice-trigger").each((i, _) => _.removeEventListener('click', onClick));
         }
-    })
+    });
     return (
         <div ref={ref} className={`choice ${isActive ? 'selected' : ''}`}>
             {/* TODO: Make unselected option white background w black border/outline */}

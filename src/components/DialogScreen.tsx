@@ -48,7 +48,7 @@ class DialogScreen extends React.Component<{data: IEventDialog}> {
                 <span>Characters</span>
             </div> */}
                 {
-                    data.dialog.filter(_ => _.option === null).map((_, i) => {
+                    this.props.data.dialog.filter(_ => _.option === null).map((_, i) => {
                         return (
                             <Dialog key={`dialog_main_${i}`} character={getCharacter(_.character)} text={_.text} />
                         );
@@ -56,7 +56,7 @@ class DialogScreen extends React.Component<{data: IEventDialog}> {
                 }
                 {
                     (() => {
-                        return data.options === undefined || data.options.length === 0 ? null : (
+                        return this.props.data.options === undefined || this.props.data.options.length === 0 ? null : (
                             <>
                                 <div
                                     className="choice-box"
@@ -70,7 +70,14 @@ class DialogScreen extends React.Component<{data: IEventDialog}> {
                                         boxSizing: 'border-box'
                                     }}>
                                     {
-                                        data.options.map((_, i) => (
+                                        (() => {
+                                            console.log(this.props.data.options);
+                                            return <></>;
+                                        })()
+
+                                    }
+                                    {
+                                        this.props.data.options.map((_, i) => (
                                             <Choice key={`opt_${i}`} canLose={canLose} isActive={i === 0} text={_.text} stat={getStat(_.stat)} />
                                         ))
                                     }
@@ -84,7 +91,7 @@ class DialogScreen extends React.Component<{data: IEventDialog}> {
                                                 for (let iSuccess = 1; iSuccess >= 0; iSuccess--) {
                                                     if (canLose && iSuccess === 0) continue;
                                                     items.push(
-                                                        <AccordionDialog key={`dialog_${iOption}${iSuccess}`} dialog={data.dialog.filter(_ => _.option === iOption && _.success === iSuccess)} getCharacter={getCharacter} iOption={iOption} iSuccess={iSuccess} />
+                                                        <AccordionDialog key={`dialog_${iOption}${iSuccess}`} dialog={this.props.data.dialog.filter(_ => _.option === iOption && _.success === iSuccess)} getCharacter={getCharacter} iOption={iOption} iSuccess={iSuccess} />
                                                     )
                                                 }
                                             }

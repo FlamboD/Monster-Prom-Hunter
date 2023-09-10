@@ -21,7 +21,8 @@ interface ISprite {
 }
 export interface IListData {
   sprite?: ISprite,
-  text: string
+  text: string,
+  data?: HTMLLIElement[]
 }
 
 export interface ISetData {
@@ -31,7 +32,7 @@ export interface ISetData {
 }
 
 function App() {
-  const history = useHistory<any>(useRef(null));
+  const history = useHistory();
   // const previous = useRef<JSX.Element>(null);
   const [categories, setCategories] = useState(categoryData);
   useEffect(() => { setCategories(categoryData); }, []);
@@ -40,26 +41,41 @@ function App() {
   const [dialogData, setDialogData] = useState<IEventDialog>();
   const [listData, setListData] = useState<Array<IListData>>();
 
+  useEffect(() => console.log(page), [page]);
+
   useEffect(() => {
-    console.log(data.events.filter(_ => [4, 5].includes(_.type)).map(_ => {_.name = _.name?.replace(/^(\w+)\d+$/g, "$1"); return _;}));
     categoryData[0].onClick = () => setListData(data.characters.map(_ => {return {text: _.name, sprite: {prefix: "ch", item: _.name}}}));
-    categoryData[1].onClick = () => setListData(data.events
+    categoryData[1].onClick = () => setListData(
+      Object.entries(data.events
       .filter(
         _ => [4, 5].includes(_.type)
-      ).map(
-        _ => {_.name = _.name?.replace(/^(\w+)\d+$/g, "$1").toUpperCase(); return _;})
-      .filter(
-        (v, i, a) => a.findIndex(
-          (_v, _i, _a) => v.name === _a[_i].name, v
-        ) === i
-      ).map(_ => {return {text: _.name as string, sprite: {prefix: "ch", item: _.name as string}}}));
+      ).reduce(
+        (pv: {[key: string]: IEvent[]}, cv) => {
+          if (cv.name === undefined) return pv;
+          let name = (cv.name.match(/.*\d$/g) ? cv.name.slice(0, -1) : cv.name).toUpperCase();
+          if(Object.keys(pv).includes(name)) pv[name].push(cv);
+          else pv[name] = [cv];
+          return pv;
+        }, {}
+      // ).filter(
+      //   _ => _.name?.endsWith("1")
+      // ).map(
+      //   _ => {_.name = _.name?.replace(/^(\w+)\d+$/g, "$1").toUpperCase(); return _;})
+      // .filter(
+      //   (v, i, a) => a.findIndex(
+      //     (_v, _i, _a) => v.name === _a[_i].name, v
+      //   ) === i
+      )).map(
+        ([k, v]) => {return {text: k.toUpperCase(), sprite: {prefix: "ch", item: k}, data: v.map(_ => <li>{_.id}</li> as unknown as HTMLLIElement)}}
+      )
+    );
     categoryData[2].onClick = () => setListData(data.items.map(_ => {return {text: _.name, sprite: {prefix: "ch", item: _.name}}}));
   })
 
   useEffect(() => {
     if(categories !== undefined) {
       setPage((
-        <CategoryScreen ref={history.ref} >
+        <CategoryScreen ref={history.getRef()} >
           {
             categoryData.map(category => <CategoryCard key={category.key} card={category} onClick={category.onClick}/>)
           }
@@ -69,13 +85,13 @@ function App() {
   }, [categories]);
   useEffect(() => {
     if(dialogData !== undefined) {
-      setPage(<DialogScreen ref={history.ref} data={dialogData} />);
+      setPage(<DialogScreen ref={history.getRef()} data={dialogData} />);
       $(".choice-trigger").addClass("collapsed");
       $(".choice-bg")?.[0]?.click();
     }
   }, [dialogData]);
   useEffect(() => {
-    if(listData !== undefined) setPage(<ListScreen ref={history.ref} data={listData} />)
+    if(listData !== undefined) setPage(<ListScreen ref={history.getRef()} data={listData} />)
   }, [listData]);
   
 
@@ -96,8 +112,11 @@ function App() {
       </div> */}
       <div className='mt-4' style={{ gridRow: gridRow++ }}>
         <div className="navigation d-grid">
-          <div></div>
-          <BackBtn history={history} onClick={() => { setPage(history.current) }} />
+          <div>
+            <BackBtn history={history} onClick={
+              () => { setPage(history.goBack() as JSX.Element) }
+              } />
+          </div>
           <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
             <SearchBar setDialogData={setDialogData} />
           </div>

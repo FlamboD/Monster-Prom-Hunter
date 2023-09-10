@@ -1,81 +1,39 @@
-import React, { useEffect, useMemo, useRef, useState } from "react";
+import React, { useMemo } from "react";
 
-// export interface IHistory<T> extends React.MutableRefObject<T | undefined> {
-//     previous: T | undefined,
-//     history: Array<T>
-// }
+export class History {
+    current?: JSX.Element | JSX.Element[];
+    previous?: JSX.Element | JSX.Element[];
+    private history: (JSX.Element|JSX.Element[])[];
 
-// class History<T> implements IHistory<T> {
-//     ref: React.MutableRefObject<T>;
-//     previous: T;
-//     history: T[];
-
-//     constructor(ref: React.MutableRefObject<T>) {
-//         this.ref = ref;
-//         useEffect(() => {
-
-//         })
-//         useRef(initialValue);
-//     }
-// }
-// Stack class
-class Stack<T> {
-    items: T[];
-    
     constructor() {
-        this.items = [];
-    }
-    
-    push(element: T) {
-        this.items.push(element);
-    }
-    
-    pop(): T | undefined {
-        if (this.items.length === 0) return;
-        return this.items.pop();
-    }
-    
-    peek() {
-        return this.items[this.items.length - 1];
-    }
-    
-    isEmpty() {
-        return this.items.length === 0;
-    }
-}
-
-export class History<T> {
-    readonly ref?: React.MutableRefObject<T | undefined>;
-    current?: T;
-    previous?: T;
-    private history: Stack<T>;
-
-    constructor(ref: React.MutableRefObject<T | undefined>) {
-        this.ref = ref;
-        this.current = ref.current;
-        this.previous = undefined;
-        this.history = new Stack();
+        this.history = [];
     }
 
     public goBack() {
         if (this.previous === undefined) return;
         this.current = this.previous;
         this.previous = this.history.pop();
+        return this.current;
     }
 
-    public navigate(next: T) {
+    public navigate(next: JSX.Element | JSX.Element[]) {
         if(this.previous !== undefined) this.history.push(this.previous);
         this.previous = this.current;
         this.current = next;
     }
 
+    public getRef() {
+        return ((node: React.Component | null) => {
+            if(node === null || node === undefined) return;
+            let el = node.render()
+            if(el === this.current) return;
+            console.log("DOING HISTORY", node, this);
+            this.navigate(el as (JSX.Element | JSX.Element[]));
+        });
+    }
 }
 
-export function useHistory<T>(ref: React.MutableRefObject<T | undefined>): History<T> {
-    const history = useMemo(() => new History(ref), [ref]);
-    useEffect(() => {
-        if(ref.current === history.current) return;
-        if(ref.current !== undefined) history.navigate(ref.current);
-    }, [history, ref]);
+export function useHistory(): History {
+    const history = useMemo(() => new History(), []);
     return history;
 }
