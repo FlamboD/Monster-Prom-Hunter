@@ -1,6 +1,6 @@
 import React, { useEffect, useRef, useState } from 'react';
 import '../styles/SearchBar.scss';
-import data, { IDialog, IItem, IOption, ICharacter, IEventDialog } from '../data/data';
+import data, { IDialog, IItem, IOption, ICharacter, IEventDialog, IEvent } from '../data/data';
 import SearchCategory from './SearchCategory';
 
 const getCharacter: (id?: number) => ICharacter | undefined = (id) => {
@@ -19,6 +19,7 @@ const SearchBar = ({ setDialogData }: { setDialogData: (_: IEventDialog) => void
 
   const [searchCharacters, setSearchCharacters] = useState<Array<ICharacter>>([]);
   const [searchItems, setSearchItems] = useState<Array<IItem>>([]);
+  const [searchEvents, setSearchEvents] = useState<Array<IEvent>>([]);
   const [searchDialog, setSearchDialog] = useState<Array<IDialog>>([]);
   const [searchChoices, setSearchChoices] = useState<Array<IOption>>([]);
 
@@ -28,6 +29,7 @@ const SearchBar = ({ setDialogData }: { setDialogData: (_: IEventDialog) => void
     if(!searchText.trim()) {
       setSearchCharacters([]);
       setSearchItems([]);
+      setSearchEvents([]);
       setSearchDialog([]);
       setSearchChoices([]);
       return;
@@ -35,6 +37,7 @@ const SearchBar = ({ setDialogData }: { setDialogData: (_: IEventDialog) => void
     
     setSearchCharacters(data.characters.filter(_ => _.name.toLowerCase().includes(searchText.toLowerCase())));
     // setSearchCharacters(data.characters.filter(_ => _.name.toLowerCase().includes(searchText.toLowerCase())));
+    setSearchEvents(data.events.filter(_ => (_.name && _.name.toLowerCase().includes(searchText.toLowerCase())) || _.id.toString().includes(searchText)));
     setSearchDialog(data.dialog.filter(_ => _.text && _.text.toLowerCase().includes(searchText.toLowerCase())));
     setSearchChoices(data.options.filter(_ => _.text && _.text.toLowerCase().includes(searchText.toLowerCase())));
   }, [searchText]);
@@ -58,6 +61,7 @@ const SearchBar = ({ setDialogData }: { setDialogData: (_: IEventDialog) => void
           <SearchCategory title='Characters' options={searchCharacters.map(_ => {return {key:`char_${_.id}`, className:`ch-sprite ch_${_.name.toLowerCase()}`, text:_.name}} )} />
           <SearchCategory title='Items' options={[]} />
           {/* <div key={`txt_${_.eventId}-${i}`} style={{display: 'flex', alignItems: 'center'}}><div className={`ch-sprite ch_${getCharacter(_.character)?.name?.toLowerCase()}`}></div><span>{_.text}</span></div> */}
+          <SearchCategory title='Events' options={searchEvents.map((_, i) => {return {key:`event_${_.id}-${i}`, setDialogData:() => setDialogData(getEventDialog(_.id)), className:``, text:_.name as string}} )} />
           <SearchCategory title='Choices' options={searchChoices.map((_, i) => {return {key:`choice_${_.eventId}-${i}`, setDialogData:() => setDialogData(getEventDialog(_.eventId)), className:``, text:_.text || "..."}} )} />
           <SearchCategory title='Conversations' options={searchDialog.map((_, i) => {return {key:`txt_${_.eventId}-${i}`, setDialogData:() => setDialogData(getEventDialog(_.eventId)), className:`ch-sprite ch_${getCharacter(_.character)?.name?.toLowerCase()}`, text:_.text || "..." }} )} />
           {/* {searchDialog.map(_ => _.text).join("|")} */}

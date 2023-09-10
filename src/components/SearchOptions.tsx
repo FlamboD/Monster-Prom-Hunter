@@ -3,11 +3,7 @@ import React from 'react'
 const SearchOptions = ({ className, text, setDialogData }: { className: string, text: string, setDialogData?: () => void }) => {
   return (
     <div
-      style={{
-        display: 'flex',
-        alignItems: 'center',
-        padding: '0.3rem 0'
-      }}
+      className='d-flex align-items-center p-1 ps-2 w-100'
       onClick={() => { if (setDialogData !== undefined) setDialogData(); }}
     >
       {

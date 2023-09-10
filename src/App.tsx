@@ -31,6 +31,14 @@ export interface ISetData {
   setListData: (_: Array<IListData>) => void
 }
 
+const getEventDialog: (_: number) => IEventDialog = (eventId: number) => {
+  return {
+    event: data.events.find(_ => _.id === eventId),
+    dialog: data.dialog.filter(_ => _.eventId === eventId),
+    options: data.options.filter(_ => _.eventId === eventId) || undefined
+  } as IEventDialog;
+}
+
 function App() {
   const history = useHistory();
   // const previous = useRef<JSX.Element>(null);
@@ -66,7 +74,7 @@ function App() {
       //     (_v, _i, _a) => v.name === _a[_i].name, v
       //   ) === i
       )).map(
-        ([k, v]) => {return {text: k.toUpperCase(), sprite: {prefix: "ch", item: k}, data: v.map(_ => <li>{_.id}</li> as unknown as HTMLLIElement)}}
+        ([k, v]) => {return {text: k.toUpperCase(), sprite: {prefix: "ch", item: k}, data: v.map(_ => <li style={{cursor: 'pointer'}} onClick={() => { setDialogData(getEventDialog(_.id)) }}>{_.id}</li> as unknown as HTMLLIElement)}}
       )
     );
     categoryData[2].onClick = () => setListData(data.items.map(_ => {return {text: _.name, sprite: {prefix: "ch", item: _.name}}}));

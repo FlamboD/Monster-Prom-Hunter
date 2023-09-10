@@ -32,11 +32,9 @@ const SearchCategory = ({title, options}: {title: string, options: Array<{key: s
         >{title}</span>
         <div
             id={`cat-${title}`}
-            className='collapse show'
+            className='flex-column collapse show'
             style={{
-                flexDirection: 'column',
                 alignItems: 'flex-start',
-                padding: '0 0.5rem',
                 backgroundColor: 'white'
             }}>
             {
