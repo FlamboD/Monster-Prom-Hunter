@@ -1,11 +1,13 @@
 import jsonData from './data.json';
 
-export interface IItem {
-    shortName: string,
-    price: number,
-    name: string,
-    description: string
-}
+// export interface IItem {
+//     shortName: string,
+//     price: number,
+//     name: string,
+//     description: string,
+//     narrativeName: string,
+//     narrativeDescription: string
+// }
 export interface ICharacter {
     id: number,
     name: string
@@ -48,6 +50,8 @@ export interface IItem {
     narrativeName: string,
     narrativeDescription: string
 }
+// { name: string; price: number; narrativeName: string; narrativeDescription: string; }[]
+// { name: string; price: number; narrativeName: string; narrativeDescription: string; }
 export interface IData {
     characters: Array<ICharacter>,
     events: Array<IEvent>,

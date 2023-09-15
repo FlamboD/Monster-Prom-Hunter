@@ -21,11 +21,18 @@ class ListScreen extends React.Component<{ data: Array<IListData> }> {
                                 }
                                 <span>{_.text}</span>
                             </div>
-                            <ul>
-                                {
-                                    _.data as undefined | ReactNode[]
-                                }
-                            </ul>
+                            {
+                                (() => {
+                                    if ((_.data?.length ?? 0) === 0) return;
+                                    return (
+                                        <ul>
+                                            {
+                                                _.data as undefined | ReactNode[]
+                                            }
+                                        </ul>
+                                    )
+                                })()
+                            }
                         </div>
                     )
                 })

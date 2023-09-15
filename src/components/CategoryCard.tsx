@@ -1,7 +1,6 @@
 import React from "react";
 import { ICard } from "../data/CategoryPage";
 import "../styles/CategoryCard.scss"
-import { ISetData } from "../App";
 
 interface ICategoryCardProps {
     card: ICard,

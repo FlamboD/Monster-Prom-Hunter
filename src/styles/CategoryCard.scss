@@ -41,17 +41,4 @@
         padding: 0.5rem;
         background-color: #d3d0d1;
     }
-
-    $colors: (255, 255, 0) (255, 0, 0) (30, 230, 30) (0, 0, 255);
-    @for $i from 1 through 4 {
-        &:nth-child(#{$i}) {
-            .category-image {
-                background-color: RGBA(nth($colors, $i), 0.7);
-            }
-            h1 {
-                --glow-color: RGBA(#{nth($colors, $i)}, 1);
-            }
-        }
-
-    }
 }

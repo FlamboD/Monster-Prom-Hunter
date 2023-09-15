@@ -1,10 +1,9 @@
-import React from 'react'
+import React from 'react';
 
-const SearchOptions = ({ className, text, setDialogData }: { className: string, text: string, setDialogData?: () => void }) => {
+const SearchOptions = ({ className, text }: { className: string, text: string }) => {
   return (
     <div
       className='d-flex align-items-center p-1 ps-2 w-100'
-      onClick={() => { if (setDialogData !== undefined) setDialogData(); }}
     >
       {
         (() => {
@@ -28,4 +27,4 @@ const SearchOptions = ({ className, text, setDialogData }: { className: string, 
   )
 }
 
-export default SearchOptions
+export default SearchOptions;

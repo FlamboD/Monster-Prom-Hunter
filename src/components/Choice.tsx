@@ -6,16 +6,13 @@ import { Collapse } from 'react-bootstrap';
 const Choice = ({ isActive, text, canLose=false, stat }: { isActive: boolean, text: string, canLose: boolean, stat?: string }) => {
     const ref = useRef<HTMLDivElement>(null);
     useEffect(() => {
-        console.log("Register box click")
         const el: HTMLDivElement | null = ref.current;
         const onClick = (_: Event) => {
-            console.log("CHOICE BOX CLICK")
             if ($(_.target as any).closest(".choice-trigger").length !== 0) return;
             if (el?.classList.contains("selected")) return;
             $(".choice").toggleClass("selected");
 
             let sprite = $(el as any).find('.choice-trigger:first-of-type');
-            console.log(sprite);
             if (sprite.hasClass("collapsed")) sprite[0].click();
             // sprite[0]?.click();
         }
@@ -24,15 +21,9 @@ const Choice = ({ isActive, text, canLose=false, stat }: { isActive: boolean, te
         return () => { el?.removeEventListener('click', onClick); }
     });
     useEffect(() => {
-        console.log("Register choice trigger");
         const onClick = (_: Event) => {
-            console.log("CHOICE TRIGGER")
             const target = _.currentTarget as HTMLElement;
             if (!target.closest(".choice")?.classList.contains("selected")) $(".choice").toggleClass("selected");
-            // console.log($(".choice-trigger"));
-            // $(".choice-trigger").removeClass("collapsed");
-            // console.log(_.target);
-            // $(_.target as any).addClass("collapsed");
         }
         $(".choice-trigger").each((i, _) => _.addEventListener('click', onClick));
         return () => {
@@ -40,13 +31,10 @@ const Choice = ({ isActive, text, canLose=false, stat }: { isActive: boolean, te
         }
     });
     return (
-        <div ref={ref} className={`choice ${isActive ? 'selected' : ''}`}>
-            {/* TODO: Make unselected option white background w black border/outline */}
+        <div ref={ref} className={`col-12 col-sm-6 choice ${isActive ? 'selected' : ''}`}>
             <div className="choice-bg">
                 <span>{text}</span>
             </div>
-            {/* TODO: Hide stat sprites for some events */}
-            {/* Reset selected sprite to first when new dialog is selected */}
             <div className={"stat-btns"} style={{ position: 'absolute', top: '100%', width: '100%', display: canLose ? 'none' : 'flex', justifyContent: 'space-around', transform: 'translateY(-2rem)' }}>
                 <div
                     style={{ width: '5rem' }}

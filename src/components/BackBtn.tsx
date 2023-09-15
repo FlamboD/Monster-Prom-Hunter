@@ -2,11 +2,10 @@ import React, { useEffect, useState } from 'react';
 import '../styles/BackBtn.scss';
 import { History } from '../History';
 
-const BackBtn = ({ history, onClick }: { history: History, onClick: () => void }) => {
+const BackBtn = ({ history, onClick }: { history?: History, onClick: () => void }) => {
   const [visible, setVisible] = useState(false);
   useEffect(() => {
-    console.log("BUTTONS")
-    setVisible(history.previous !== undefined)
+    setVisible(history?.previous !== undefined || true)
   })
   return (
     <div className='back-btn' style={{ display: visible ? '' : 'none' }}>

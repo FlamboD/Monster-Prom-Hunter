@@ -23,4 +23,11 @@
             width: 1rem;
         }
     }
+    .category-items {
+        a {
+            &:hover {
+                background-color: #DDD;
+            }
+        }
+    }
 }

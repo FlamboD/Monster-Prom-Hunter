@@ -14,7 +14,7 @@ const getEventDialog: (_: number) => IEventDialog = (eventId: number) => {
     options: data.options.filter(_ => _.eventId === eventId) || undefined
   } as IEventDialog;
 }
-const SearchBar = ({ setDialogData }: { setDialogData: (_: IEventDialog) => void }) => {
+const SearchBar = () => {
   const [searchText, setSearchText] = useState("");
 
   const [searchCharacters, setSearchCharacters] = useState<Array<ICharacter>>([]);
@@ -22,8 +22,6 @@ const SearchBar = ({ setDialogData }: { setDialogData: (_: IEventDialog) => void
   const [searchEvents, setSearchEvents] = useState<Array<IEvent>>([]);
   const [searchDialog, setSearchDialog] = useState<Array<IDialog>>([]);
   const [searchChoices, setSearchChoices] = useState<Array<IOption>>([]);
-
-  const searchResultsRef = useRef<HTMLElement>(null);
 
   useEffect(() => {
     if(!searchText.trim()) {
@@ -55,15 +53,16 @@ const SearchBar = ({ setDialogData }: { setDialogData: (_: IEventDialog) => void
             "--cross": `url(${process.env.PUBLIC_URL}/images/x.svg)`
           } as React.CSSProperties}
           onChange={(e) => setSearchText(e.currentTarget.value)}
+          onClick={() => {$("#searchResults").removeClass("pe-none");}}
         />
-        <div ref={searchResultsRef as React.MutableRefObject<HTMLDivElement>} id='searchResults'>
+        <div className={`${searchText.length > 0 ? '' : 'd-none border-0'}`} id='searchResults'>
           {/* <div key={`char_${_.id}`} style={{display: 'flex', alignItems: 'center'}}><div className={`ch-sprite ch_${_.name.toLowerCase()}`}></div><span>{_.name}</span></div>) */}
           <SearchCategory title='Characters' options={searchCharacters.map(_ => {return {key:`char_${_.id}`, className:`ch-sprite ch_${_.name.toLowerCase()}`, text:_.name}} )} />
           <SearchCategory title='Items' options={[]} />
           {/* <div key={`txt_${_.eventId}-${i}`} style={{display: 'flex', alignItems: 'center'}}><div className={`ch-sprite ch_${getCharacter(_.character)?.name?.toLowerCase()}`}></div><span>{_.text}</span></div> */}
-          <SearchCategory title='Events' options={searchEvents.map((_, i) => {return {key:`event_${_.id}-${i}`, setDialogData:() => setDialogData(getEventDialog(_.id)), className:``, text:_.name as string}} )} />
-          <SearchCategory title='Choices' options={searchChoices.map((_, i) => {return {key:`choice_${_.eventId}-${i}`, setDialogData:() => setDialogData(getEventDialog(_.eventId)), className:``, text:_.text || "..."}} )} />
-          <SearchCategory title='Conversations' options={searchDialog.map((_, i) => {return {key:`txt_${_.eventId}-${i}`, setDialogData:() => setDialogData(getEventDialog(_.eventId)), className:`ch-sprite ch_${getCharacter(_.character)?.name?.toLowerCase()}`, text:_.text || "..." }} )} />
+          <SearchCategory title='Events' options={searchEvents.map((_, i) => {return {key:`event_${_.id}-${i}`, link: `/event/${_.id}`, className:``, text:_.name as string}} )} />
+          <SearchCategory title='Choices' options={searchChoices.map((_, i) => {return {key:`choice_${_.eventId}-${i}`, link: `/event/${_.eventId}`, className:``, text:_.text || "..."}} )} />
+          <SearchCategory title='Conversations' options={searchDialog.map((_, i) => {return {key:`txt_${_.eventId}-${i}`, link: `/event/${_.eventId}`, className:`ch-sprite ch_${getCharacter(_.character)?.name?.toLowerCase()}`, text:_.text || "..." }} )} />
           {/* {searchDialog.map(_ => _.text).join("|")} */}
         </div>
     </div>

@@ -27,7 +27,6 @@ export class History {
             if(node === null || node === undefined) return;
             let el = node.render()
             if(el === this.current) return;
-            console.log("DOING HISTORY", node, this);
             this.navigate(el as (JSX.Element | JSX.Element[]));
         });
     }

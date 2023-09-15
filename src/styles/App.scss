@@ -18,6 +18,11 @@
   }
 }
 
+a {
+  text-decoration: none;
+  color: black;
+}
+
 .glow {
   text-shadow: 0 0 2px #888, 0 0 4px #888, 0 0 6px var(--glow-color), 0 0 8px var(--glow-color), 0 0 8px var(--glow-color), 0 0 8px var(--glow-color), 0 0 8px var(--glow-color);
   color: white;

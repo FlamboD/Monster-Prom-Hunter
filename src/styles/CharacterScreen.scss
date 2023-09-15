@@ -1,0 +1,61 @@
+.collapsible {
+    .collapse-item {
+        position: relative;
+        margin-left: 2rem;
+
+        span[data-bs-toggle="collapse"] {
+            position: relative;
+
+            &.collapsed::after {
+                content: "";
+                position: absolute;
+                right: 0;
+                top: 50%;
+                border: 0.5rem solid transparent;
+                border-bottom: 0.5rem solid black;
+
+                transform: translate(150%, -75%);
+            }
+
+            &:not(.collapsed)::after {
+                
+                content: "";
+                position: absolute;
+                right: 0;
+                top: 50%;
+                border: 0.5rem solid transparent;
+                border-top: 0.5rem solid black;
+
+                transform: translate(150%, -25%);
+            }
+        }
+
+        &::before {
+            content: "";
+            position: absolute;
+            width: 2px;
+            height: 100%;
+            background-color: black;
+
+            top: 0;
+            left: -1rem;
+        }
+
+        &::after {
+            content: "";
+            position: absolute;
+            width: 0.75rem;
+            height: 2px;
+            background-color: black;
+
+            top: 1.5ex;
+            left: -1rem;
+        }
+
+        &:last-of-type {
+            &::before {
+                height: 50%;
+            }
+        }
+    }
+}

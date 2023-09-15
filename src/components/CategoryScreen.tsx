@@ -4,7 +4,8 @@ import "../styles/CategoryScreen.scss";
 class CategoryScreen extends React.Component<{children: JSX.Element[]}, {}> {
     render() {
         return (
-            <div className="category-screen">
+            // Class name: category-screen
+            <div className="category-screen row g-2 justify-content-md-center">
                 {/* {
                     categories.cards?.map(category => <CategoryCard key={category.key} card={category} setData={setData}/>)
                 } */}

@@ -4,7 +4,7 @@ import { ICharacter } from '../data/data'
 
 const Dialog = ({character, text}: {character?: ICharacter, text?: string}) => {
   return (
-    <div className="dialog" style={{ justifyContent: character === undefined ? 'center' : 'flex-start' }}>
+    <div className="dialog my-1" style={{ justifyContent: character === undefined ? 'center' : 'flex-start' }}>
         {
             (() => {
                 return character === undefined ? (<></>) : (
@@ -20,7 +20,7 @@ const Dialog = ({character, text}: {character?: ICharacter, text?: string}) => {
             {
                 (() => {
                     return character === undefined ? (<></>) : (
-                        <span>
+                        <span className='speaker-name'>
                             {character?.name}
                         </span>
                     )
